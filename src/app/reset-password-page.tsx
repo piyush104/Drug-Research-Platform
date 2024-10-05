@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { LoaderCircle, LockIcon } from "lucide-react";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import Breadcrumb from "@/components/ComponentHeader/ComponentHeader";
+import DefaultLayout from "@/components/DefaultLayout";
+import Breadcrumb from "@/components/Header";
 import { useRouter, useSearchParams } from "next/navigation";
 import { resetPassword } from "@/lib/actions/user.actions";
 
@@ -41,7 +41,7 @@ const ResetPasswordPage: React.FC = () => {
       setTimeout(() => {
         router.push("/auth-page/signin");
       }, 3000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setError("Something went wrong. Please try again.");
       console.error(err);
     } finally {
@@ -51,7 +51,7 @@ const ResetPasswordPage: React.FC = () => {
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Reset Password" />
+      <Breadcrumb sidebarOpen={false} setSidebarOpen={() => {}} />
 
       <div className="rounded-lg border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
